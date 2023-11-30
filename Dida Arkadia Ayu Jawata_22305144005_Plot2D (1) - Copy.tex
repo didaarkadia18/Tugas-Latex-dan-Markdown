@@ -1,0 +1,534 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{eumat}
+
+\begin{document}
+\begin{eulernotebook}
+\begin{eulercomment}
+NAMA : Dida Arkadia Ayu Jawata\\
+NIM : 22305144005\\
+KELAS  : Matematika E
+\end{eulercomment}
+\begin{eulercomment}
+
+\begin{eulercomment}
+\eulerheading{PLOT 2D}
+\eulerheading{Menggambar Grafik Fungsi Simbolik}
+\begin{eulercomment}
+Fungsi Plot yang paling penting untuk plot planar adalah plot2d().
+Fungsi ini diimplementasikan dalam bahasa Euler dalam file "plot.e",
+yang dimuat diawal program.
+
+plot2d() menerima ekspresi, fungsi, dan data.
+
+Rentang plot diatur dengan parameter yang ditetapkan ssbagai berikut\\
+- a,b: rentang x (default -2,2)\\
+- -c,d: rentang y (default: skala dengan nilai)\\
+- r: alternatifnya radius di sekitar pusat plot\\
+- cx,cy: koordinat pusat plot (default 0,0)
+
+Keterangan:(menggambar grafik fungsi satu variabel yang fungsinya
+didefinisikan sebagai fungsi simbolik)\\
+- \&: untuk menampilkan variabel pada teks
+
+Berikut adalah beberapa contoh menggunakan fungsi. Seperti biasa di
+EMT, fungsi yang berfungsi untuk fungsi atau ekspresi lain, jadi kita
+dapat meneruskan parameter tambahan (selain x) yang bukan variabel
+global ke fungsi dengan parameter titik koma atau dengan koleksi
+panggilan.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x,a) := x^2/a+a*x^2-x; // define a function
+>a=0.3; plot2d("f",0,1;a): // plot with a=0.3
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-001.png}
+\begin{eulerprompt}
+>plot2d("f",0,1;0.4): // plot with a=0.4
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-002.png}
+\begin{eulerprompt}
+>plot2d(\{\{"f",0.2\}\},0,1); // plot with a=0.2
+>plot2d(\{\{"f(x,b)",b=0.1\}\},0,1): // plot with 0.1
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-003.png}
+\begin{eulerprompt}
+>function f(x) := x^3-x;...
+>plot2d("f",r=1):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-004.png}
+\begin{eulercomment}
+Berikut merupakan ringkasan dari fungsi yang diterima\\
+- ekspresi atau ekspresi simbolik dalam x\\
+- fungsi atau fungsi simbolis dengan nama sebagai "f"\\
+- fungsi simbolis hanya dengan nama f\\
+\end{eulercomment}
+\begin{eulerttcomment}
+ 
+\end{eulerttcomment}
+\begin{eulercomment}
+Fungsi plot2d() juga menerima fungsi simbolis. Untuk fungsi simbolis,
+hanya nama saja yang berfungsi.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(x) &= diff(x^x,x)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                              x
+                             x  (log(x) + 1)
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>plot2d(f,0,2):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-005.png}
+\begin{eulerprompt}
+>expr &= sin(x)*exp(-x)
+\end{eulerprompt}
+\begin{euleroutput}
+  
+                                - x
+                               E    sin(x)
+  
+\end{euleroutput}
+\begin{eulerprompt}
+>plot2d(expr,0,3pi):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-006.png}
+\begin{eulerprompt}
+>function f(x) &=x^x;
+>plot2d(f,r=1,cx=1,cy=1,color=red,thickness=2)
+>plot2d(&diff(f(x),x),>add,color=blue,style="-.-"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-007.png}
+\begin{eulercomment}
+Untuk gaya garis ada berbagai pilihan.\\
+- gaya="...". Pilih dari "-","--","-.",".",".-.","-.-".\\
+- warna: Lihat di bawah untuk warna.\\
+- ketebalan: Default adalah 1.\\
+\end{eulercomment}
+\begin{eulerttcomment}
+ 
+\end{eulerttcomment}
+\begin{eulercomment}
+Warna dapat dipilih sebagai salah satu warna default, atau sebagai
+warna RGB.\\
+- 0.15: indeks warna default.\\
+- konstanta warna: putih, hitam, merah, hijau, biru, cyan, zaitun,
+abu-abu muda, abu-abu, abu-abu tua, oranye, hijau muda, pirus, biru
+muda, oranye terang, kuning\\
+- rgb(merah, hijau, biru): parameter adalah real dalam [0,1].
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("exp(-x^2)",r=2,color=blue,thickness=3,style="--"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-008.png}
+\begin{eulerprompt}
+>aspect(2); columnsplot(ones(1,16),lab=0:15,grid=0,color=0:15):
+\end{eulerprompt}
+\eulerimg{14}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-009.png}
+\begin{eulerprompt}
+>columnsplot(ones(1,16),grid=0,color=rgb(0,0,linspace(0,1,15))):
+\end{eulerprompt}
+\eulerimg{14}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-010.png}
+\eulerheading{Menggambar Beberapa Kurva Sekaligus}
+\begin{eulercomment}
+Dalam subtopik ini, kita akan membahas mengenai cara menggambar
+beberapa kurva sekaligus. Dalam hal ini kita dapat menggambar beberapa
+kurva dalam jendela grafik yang berbeda secara bersama-sama. Untuk
+membuat ini kita dapat menggunakan perintah figure(). Berikut contoh
+dari menggambar beberapa kurva sekaligus
+
+Menggambar plot fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+x^n, 1 \leq n \leq 4
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>reset;
+>figure(2,2);...
+>for n=1 to 4; figure(n); plot2d("x^"+n); end;...
+>figure(0):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-011.png}
+\begin{eulercomment}
+Penjelasan sintaks dari plot fungsi
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+x^n,  1 \leq n \leq 4
+\]
+\end{eulerformula}
+\begin{eulercomment}
+- reset;\\
+Perintah ini berguna untuk menghapus grafik yang telah ada sebelumnya,
+sehingga kita dapat memulai dari awal untuk menggambar grafik\\
+- figure(2x2);\\
+Perintah figure() digunakan untuk membuat jendela grafik dengan ukuran\\
+axb. Dalam kasus ini perintah figure(2,2) memiliki makna bahwa jendela
+grafik yang dibuat berukuran 2x2. Artinya, akan ada empat jendela
+grafik yang akan ditampilkan dengan tata letak 2 baris dan 2 kolom.\\
+- for n=1 to 4;\\
+Perintah ini digunakan untuk melakukan pengulangan (looping) perintah
+sebanyak empat kali, yaitu dari 1 hingga 4.\\
+- figure(n);\\
+Perintah ini digunakan untuk beralih dari jendela grafik satu ke
+jendela grafik lainnya (jendela grafik ke-n).\\
+- plot2d("x\textasciicircum{}"+n);\\
+Perintah plot2d() digunakan untuk membuat plot fungsi matematika.\\
+Dalam hal ini fungsi yang diplot adalah x\textasciicircum{}n, di mana n adalah nilai
+dari variabel yang sedang diulang. Dengan kata lain, ini akan membuat\\
+plot dari x\textasciicircum{}1, x\textasciicircum{}2, x\textasciicircum{}3, dan x\textasciicircum{}4 dalam jendela grafik yang sesuai\\
+- end;\\
+Perintah ini menandakan akhir dari looping.\\
+- figure(0);\\
+Perintah ini digunakan untuk beralih kembali ke jendela grafik utama.
+\end{eulercomment}
+\begin{eulerprompt}
+>figure(2,2);... 
+>for n=1 to 4; figure(n); plot2d("x^"+n); end;..
+\end{eulerprompt}
+\begin{eulercomment}
+Dari sini dapat kita perhatikan untuk membuat kurva fungsi x\textasciicircum{}n (x
+pangkat n) perintahnya tidak ditulis dengan (x\textasciicircum{}n) melainkan ditulis
+dengan ("x\textasciicircum{}"+n). Tanda petik dua ("...") digunakan untuk
+mengidentifikasi bahwa teks tersebut merupakan ekspresi matematika.\\
+Sedangkan tanda (+) digunakan untuk menggabungkan string dengan nilai
+yang berubah-ubah atau variabel.
+
+Contoh lain:\\
+Menggambar plot fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x)=x^3-x, -2<x<2
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>reset;
+>figure(3,3);...
+>for k=1:9; figure(k); plot2d("x^3-x",-2,2,grid=k); end;...
+>figure(0):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-012.png}
+\begin{eulerttcomment}
+ Penjelasan sintaks dari plot fungsi
+\end{eulerttcomment}
+\begin{eulerformula}
+\[
+f(x)=x^3-x, -2<x<2
+\]
+\end{eulerformula}
+\begin{eulercomment}
+- reset;\\
+Perintah ini berguna untuk menghapus grafik yang telah ada sebelumnya,
+sehingga kita dapat memulai dari awal untuk menggambar grafik\\
+- figure (3,3);\\
+Perintah ini digunakan untuk membuat jendela grafik dengan ukuran 3x3.
+Artinya, akan ada empat jendela grafik yang akan ditampilkan dengan
+tata letak 3 baris dan 3 kolom.\\
+- for k=1:9;\\
+Perintah ini digunakan untuk melakukan pengulangan (looping) perintah
+sebanyak sembilan kali.\\
+- figure(n);\\
+Perintah ini digunakan untuk beralih dari jendela grafik satu ke\\
+\end{eulercomment}
+\begin{eulerttcomment}
+ jendela grafik lainnya (jendela grafik ke-n).
+\end{eulerttcomment}
+\begin{eulercomment}
+- plot2d("x\textasciicircum{}3-x",-2,2,grid=k);\\
+Perintah plot2d() digunakan untuk membuat plot fungsi matematika.\\
+Dalam hal ini fungsi yang diplot adalah x\textasciicircum{}3-x, dengan batas sumbu x
+dari -2 hingga 2. Argumen grid=k digunakan untuk mengaktifkan grid
+pada jendela grafik ke-k.\\
+- end;\\
+Perintah ini menandakan akhir dari looping.\\
+- figure(0);\\
+Perintah ini digunakan untuk beralih kembali ke jendela grafik utama.
+
+Dari contoh diatas dapat kita perhatikan bahwa tampilan plot dari yang
+ke-1 hingga ke-9 memiliki tampilan yang berbeda-beda. Dalam EMT
+memiliki berbagai gaya plot 2D yang dapat dijalankan menggunakan
+perintah grid=n dimana n adalah jumlah langkah minimal. Setiap nilai n
+memiliki tampilan plot adaptif yang berbeda dalam plot 2D, diantaranya
+yaitu:\\
+0 : tidak ada grid (kisi), frame, sumbu, dan label, hanya kurva saja\\
+1 : dengan sumbu, label-label sumbu di luar frame jendela grafik\\
+2 : tampilan default\\
+3 : dengan grid pada sumbu x dan y, label-label sumbu berada di dalam
+jendela grafik\\
+4 : tidak ada grid (kisi), sumbu x dan y, dan label berada di luar
+frame jendela grafik\\
+5 : tampilan default tanpa margin di sekitar plot\\
+6 : hanya dengan sumbu x y dan label, tanpa grid\\
+7 : hanya dengan sumbu x y dan tanda-tanda pada sumbu.\\
+8 : hanya dengan sumbu dan tanda-tanda pada sumbu, dengan tanda-tanda
+yang lebih halus pada sumbu.\\
+9 : tampilan default dengan tanda-tanda kecil di dalam jendela\\
+10: hanya dengan sumbu-sumbu, tanpa tanda
+
+Contoh lain:\\
+Menggambar plot fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x)=2x^3-x
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>reset;
+>aspect(1.2);
+>figure(3,4); ...
+> figure(2); plot2d("2x^3-x",grid=1); ... // x-y-axis
+> figure(3); plot2d("2x^3-x",grid=2); ... // default ticks
+>figure(4); plot2d("2x^3-x",grid=3); ... // x-y- axis with labels inside
+>figure(5); plot2d("2x^3-x",grid=4); ... // no ticks, only labels
+>figure(6); plot2d("2x^3-x",grid=5); ... // default, but no margin
+>figure(7); plot2d("2x^3-x",grid=6); ... // axes only
+>figure(8); plot2d("2x^3-x",grid=7); ... // axes only, ticks at axis
+>figure(9); plot2d("2x^3-x",grid=8); ... // axes only, finer ticks at axis
+>figure(10); plot2d("2x^3-x",grid=9); ... // default, small ticks inside
+>figure(11); plot2d("2x^3-x",grid=10); ...// no ticks, axes only
+>figure(0):
+\end{eulerprompt}
+\eulerimg{24}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-013.png}
+\begin{eulercomment}
+Penjelasan sintaks dari plot fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x)=2x^3-x
+\]
+\end{eulerformula}
+\begin{eulercomment}
+- aspect(1.2);\\
+Perintah aspect() digunakan untuk mengatur rasio aspek dari jendela
+grafik. Hal ini berarti perintah aspect(1.2); akan menghasilkan plot
+dengan perbandingan rasio panjang dan lebar 2:1.\\
+- figure(3,4);\\
+Perintah ini digunakan untuk membuat jendela grafik dengan ukuran 3x4.\\
+Jadi, akan ada total 12 jendela grafik yang akan ditampilkan dalam
+tata letak 3 baris dan 4 kolom.\\
+- figure(1); plot2d("x\textasciicircum{}3-x",grid=0); ...\\
+Adalah perintah untuk beralih ke jendela grafik pertama dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x tanpa grid, frame, atau sumbu.\\
+- figure(2); plot2d("x\textasciicircum{}3-x",grid=1); ...\\
+Adalah perintah untuk beralih ke jendela grafik kedua dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x dengan grid hanya pada sumbu x dan y.\\
+- figure(3); plot2d("x\textasciicircum{}3-x",grid=2); ...\\
+Adalah perintah untuk beralih ke jendela grafik ketiga dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x dengan tampilan default, termasuk tanda-tanda
+default pada sumbu.\\
+- figure(4); plot2d("x\textasciicircum{}3-x",grid=3); ...\\
+Adalah perintah untuk beralih ke jendela grafik keempat dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x dengan grid pada sumbu x dan y, serta
+label-label sumbu yang ada di dalam jendela.\\
+- figure(5); plot2d("x\textasciicircum{}3-x",grid=4); ...\\
+Adalah perintah untuk beralih ke jendela grafik kelima dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x tanpa tanda-tanda sumbu, hanya label-label
+yang ada.\\
+- figure(6); plot2d("x\textasciicircum{}3-x",grid=5); ...\\
+Adalah perintah untuk beralih ke jendela grafik keenam dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x dengan tampilan default, tetapi tanpa margin
+di sekitar plot.\\
+- figure(7); plot2d("x\textasciicircum{}3-x",grid=6); ...\\
+Adalah perintah untuk beralih ke jendela grafik ketujuh dan menggambar
+plot dari fungsi x\textasciicircum{}3 - x hanya dengan sumbu-sumbu (tanpa grid atau
+label).\\
+- figure(8); plot2d("x\textasciicircum{}3-x",grid=7); ...\\
+Adalah perintah untuk beralih ke jendela grafik kedelapan dan
+menggambar plot dari fungsi x\textasciicircum{}3 - x hanya dengan sumbu-sumbu dan
+tanda-tanda pada sumbu.\\
+- figure(9); plot2d("x\textasciicircum{}3-x",grid=8); ...\\
+Adalah perintah untuk beralih ke jendela grafik kesembilan dan
+menggambar plot dari fungsi x\textasciicircum{}3 - x hanya dengan sumbu-sumbu dan
+tanda-tanda pada sumbu, dengan tanda-tanda yang lebih halus pada
+sumbu.\\
+- figure(10); plot2d("x\textasciicircum{}3-x",grid=9); ...\\
+Adalah perintah untuk beralih ke jendela grafik kesepuluh dan
+menggambar plot dari fungsi x\textasciicircum{}3 - x dengan tanda-tanda default kecil
+di dalam jendela.\\
+- figure(11); plot2d("x\textasciicircum{}3-x",grid=10); ...\\
+Adalah perintah untuk beralih ke jendela grafik kesebelas dan
+menggambar plot dari fungsi x\textasciicircum{}3 - x hanya dengan sumbu-sumbu, tanpa
+tanda-tanda.\\
+- figure(0);\\
+Adalah perintah untuk beralih kembali ke jendela grafik utama atau
+jendela grafik dengan nomor 0 setelah semua perintah dalam urutan
+selesai dieksekusi.
+
+Dari ketiga contoh di atas, dapat kita katakan bahwa untuk menggambar
+beberapa kurva sekaligus itu dapat dilakukan dengan satu baris
+perintah ataupun dengan cara mendefinisikannya 1 per 1.
+
+Terlihat beberapa jenis grid memiliki tampilan yang mirip atau sama,
+seperti 1 dan 2, 2 dan 5, 4 dan 9, 7 dan 8, untuk dapat membedakannya
+secara lebih jelas, ubah grid dari contoh di bawah ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>reset;
+>aspect(1.3);
+>figure(1,3);...
+>figure (1); plot2d("x^2*exp(-x)",0,10);...
+>figure (2); plot2d("2*exp(x)",-5,5);...
+>figure (3); plot2d("exp(x^2)",-2,2);...
+>figure (0):
+\end{eulerprompt}
+\eulerimg{22}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-014.png}
+\begin{eulercomment}
+Contoh lain:
+\end{eulercomment}
+\begin{eulerprompt}
+>reset;
+>aspect(3/4);
+>figure(2,1);...
+>for a=1:2; figure(a); plot2d("2*x*log(x^2)",0,3,grid=a); end;...
+>figure(0):
+\end{eulerprompt}
+\eulerimg{34}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-015.png}
+\begin{eulercomment}
+\begin{eulercomment}
+\eulerheading{Menggambar Beberapa Kurva}
+\begin{eulercomment}
+* pada bidang koordinat yang sama
+
+Plot lebih dari satu fungsi (multiple function) ke dalam satu jendela
+dapat dilakukan dengan berbagai cara. Salah satu caranya adalah
+menggunakan \textgreater{}add untuk beberapa panggilan ke plot2d secara
+keseluruhan, kecuali panggilan pertama.
+
+Berikut contohnya:\\
+menggambar kurva\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+ f(x)=cos(x)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+f(x)= x^2
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>aspect(); plot2d("cos(x)",r=3); plot2d("x^2",style=".",>add):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-016.png}
+\begin{eulerformula}
+\[
+f(x)=cos(x)-1
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+f(x)= sin(x)-1
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>aspect(2); plot2d("cos(x)-1",-1,6); plot2d("sin(x)-1",style="--",>add):
+\end{eulerprompt}
+\eulerimg{14}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-017.png}
+\begin{eulercomment}
+Selain menggunakan \textgreater{}add kita juga bisa menambahkannya secara langsung
+
+Berikut contohnya:\\
+Menggambar kurva\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x)= 2x+1
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+f(x)= -2x+1
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>plot2d(["2x+1","x"],0,8):
+\end{eulerprompt}
+\eulerimg{14}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-018.png}
+\begin{eulerformula}
+\[
+f(x)=sin(2x)
+\]
+\end{eulerformula}
+\begin{eulerformula}
+\[
+f(x)=cos(3x)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>aspect(1.5); plot2d(["sin(2x)","cos(3x)"],0,8):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-019.png}
+\begin{eulercomment}
+Kegunaan \textgreater{}add yang lain juga bisa untuk menambahkan titik pada kurva.
+
+Berikut contohnya:\\
+Menambahkan sebuah titik di\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x)= x+4
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>aspect(); plot2d("x+4",-2,5,); plot2d(2,6,>points,>add):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-020.png}
+\begin{eulercomment}
+Kita juga bisa mencari titik perpotongan dengan cara berikut:
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+sin(x)=2x
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>plot2d(["sin(x)","2x"],r=2,cx=1,cy=1, ...
+>  color=[black,blue],style=["-","."], ...
+>  grid=1);
+>x0=solve("sin(x)-2x",1);  ...
+>  plot2d(x0,x0,>points,>add);  ...
+>  label("sin(x) = 2x",x0,x0,pos="cl",offset=20):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-021.png}
+\begin{eulerprompt}
+>function f(x,a) := x^2+a*x-x/a; ...
+>plot2d("f",-10,10;1,title="a=1"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-022.png}
+\begin{eulerprompt}
+> plot2d(\{\{"f",1\}\},-10,10); ...
+>for a=1:10; plot2d(\{\{"f",a\}\},>add); end:
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-023.png}
+\begin{eulerprompt}
+>function f(x,a) := x^2*exp(-x^2/a); ...
+>plot2d("f",-10,10;5,thickness=2,title="a=5"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-024.png}
+\begin{eulerprompt}
+>plot2d(\{\{"f",1\}\},-8,8); ...
+>for a=2:5; plot2d(\{\{"f",a\}\},>add,thickness=2); end:
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-025.png}
+\begin{eulerprompt}
+>aspect(2.1); &plot2d(1/x,[x,-1,1]):
+\end{eulerprompt}
+\eulerimg{26}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-026.png}
+\begin{eulerprompt}
+>x=linspace(-1,1,50);...
+>plot2d("1/x"):
+\end{eulerprompt}
+\eulerimg{13}{images/Dida Arkadia Ayu Jawata_22305144005_Plot2D (1)-027.png}
+\begin{eulerprompt}
+> 
+\end{eulerprompt}
+\end{eulernotebook}
+\end{document}

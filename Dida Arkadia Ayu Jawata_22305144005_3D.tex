@@ -1,0 +1,1492 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{eumat}
+
+\begin{document}
+\begin{eulernotebook}
+\begin{eulercomment}
+Nama: Dida Arkadia Ayu Jawata\\
+Kelas: Matematika E\\
+NIM: 22305144005
+
+\begin{eulercomment}
+\eulerheading{Menggambar Plot 3D dengan EMT}
+\begin{eulercomment}
+\end{eulercomment}
+\eulersubheading{1. Menggambar Grafik Fungsi Dua Variabel * dalam Bentuk Ekspresi}
+\begin{eulercomment}
+Langsung
+
+Fungsi Dua Variabel didefinisikan sebagai sebuah fungsi bernilai real
+dari dua variabel real, yakni fungsi f yang memadankan setiap pasangan\\
+terurut (x,y) pada suatu himpunan D dari bidang dengan bilangan real\\
+tunggal f (x,y).
+
+Di dalam program numerik EMT, ekspresi adalah string. Jika ditandai
+sebagai simbolis, mereka akan mencetak melalui Maxima, jika tidak
+melalui EMT. Ekspresi dalam string digunakan untuk membuat plot dan
+banyak fungsi numerik. Untuk ini, variabel dalam ekspresi harus "x"
+dan "y".
+
+Untuk grafik suatu fungsi, gunakan
+
+- ekspresi sederhana dalam x dan y,\\
+- nama fungsi dari dua variabel\\
+- atau matriks data.
+
+contoh:
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^2+y^2"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_3D-001.png}
+\begin{eulerprompt}
+>plot3d("x^2+5*y^2"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_3D-002.png}
+\begin{eulerprompt}
+>plot3d("x^2*y+3*y^2"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005_3D-003.png}
+\begin{eulerprompt}
+>aspect(1.5); plot3d("x^2+sin(y)",-5,5,0,6*pi):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-004.png}
+\begin{eulercomment}
+1. aspect(1.5) mengatur aspek rasio pada grafik 3D.\\
+2. plot3d("x\textasciicircum{}2+sin(y)",-5,5,0,6*pi) adalah fungsi matematika yang
+digunakan untuk membuat grafik 3D.\\
+3. -5,5 mengatur rentang sumbu x yang akan ditampilkan pada grafik.\\
+4. 0,6*pi mengatur rentang sumbu y yang akan ditampilkan pada grafik.
+\end{eulercomment}
+\begin{eulercomment}
+
+\end{eulercomment}
+\eulersubheading{Fungsi umum untuk plot 3D.}
+\begin{eulercomment}
+Fungsi plot3d (x, y, z, xmin, xmax, ymin, ymax, n, a,  ..\\
+b, c, d, r, scale, fscale, frame, angle, height, zoom, distance, ..)
+
+Rentang plot untuk fungsi dapat ditentukan dengan\\
+- a,b: rentang x\\
+- c,d: rentang y\\
+- r : persegi simetris di sekitar (0,0).\\
+- n : jumlah subinterval untuk plot.
+
+Ada beberapa parameter untuk menskalakan fungsi atau mengubah tampilan
+grafik.\\
+- fscale: menskalakan ke nilai fungsi (defaultnya adalah \textless{}fscale).\\
+- scale: angka atau vektor 1x2 untuk menskalakan ke arah x dan y.\\
+- frame: jenis bingkai (default 1).
+
+Tampilan dapat diubah dengan berbagai cara.\\
+- distance: jarak pandang ke plot.\\
+- zoom: nilai zoom.\\
+- angle: sudut terhadap sumbu y negatif dalam radian.\\
+- height: ketinggian pandangan dalam radian.
+
+Nilai default dapat diperiksa atau diubah dengan fungsi view(). Ini
+mengembalikan parameter dalam urutan di atas.
+
+\end{eulercomment}
+\begin{eulerprompt}
+>view 
+\end{eulerprompt}
+\begin{euleroutput}
+  [5,  2.6,  2,  0.4]
+\end{euleroutput}
+\begin{eulercomment}
+Jarak yang lebih dekat membutuhkan lebih sedikit zoom. Efeknya lebih
+seperti lensa sudut lebar.
+
+contoh:
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("exp(-(x^2+y^2)/5)",r=10,n=80,fscale=4,scale=1.2,frame=3,>user):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-005.png}
+\begin{eulercomment}
+1. exp(-(x\textasciicircum{}2+y\textasciicircum{}2)/5) adalah fungsi matematika yang digunakan untuk
+membuat grafik 3D.\\
+2. r=10 mengatur jarak maksimum dari pusat grafik ke tepi grafik.\\
+3. n=80 mengatur jumlah titik yang digunakan untuk membuat grafik.\\
+4. fscale=4 mengatur faktor skala untuk warna.\\
+5. scale=1.2 mengatur faktor skala untuk ukuran grafik.\\
+6. frame=3 mengatur jenis bingkai yang digunakan untuk grafik.
+
+\end{eulercomment}
+\begin{eulercomment}
+
+Pada contoh berikut, sudut=0 dan tinggi=0 dilihat dari sumbu y
+negatif. Label sumbu untuk y disembunyikan dalam kasus ini.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^2+y",distance=3,zoom=1,angle=pi/2,height=0):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-006.png}
+\begin{eulercomment}
+1. x\textasciicircum{}2+y adalah fungsi matematika yang digunakan untuk membuat grafik
+3D.\\
+2. distance=3 mengatur jarak pandang dari grafik.\\
+3. zoom=1 mengatur faktor perbesaran grafik.\\
+4. angle=pi/2 mengatur sudut pandang grafik dalam radian.\\
+5. height=0 mengatur ketinggian pandangan dari grafik.
+
+Plot selalu terlihat berada di tengah kubus plot. Anda dapat
+memindahkan bagian tengah dengan parameter tengah.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^4+y^2",a=0,b=1,c=-1,d=1,angle=-20°,height=20°, ...
+>  center=[0.4,0,0],zoom=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-007.png}
+\begin{eulercomment}
+1. x\textasciicircum{}4+y\textasciicircum{}2 adalah fungsi matematika yang digunakan untuk membuat
+grafik 3D.\\
+2. a=0,b=1,c=-1,d=1 mengatur rentang sumbu x dan y yang akan
+ditampilkan pada grafik.\\
+3. angle=-20° mengatur sudut pandang grafik dalam derajat.\\
+4. height=20° mengatur ketinggian pandangan dari grafik dalam derajat.\\
+5. center=[0.4,0,0] mengatur pusat pandangan dari grafik.\\
+6. zoom=5 mengatur faktor perbesaran grafik.
+
+Plotnya diskalakan agar sesuai dengan unit kubus untuk dilihat. Jadi
+tidak perlu mengubah jarak atau zoom tergantung ukuran plot. Namun
+labelnya mengacu pada ukuran sebenarnya.
+
+Jika Anda mematikannya dengan scale=false, Anda harus berhati-hati
+agar plot tetap masuk ke dalam jendela plotting, dengan mengubah jarak
+pandang atau zoom, dan memindahkan bagian tengah.
+
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("5*exp(-x^2-y^2)",r=2,<fscale,<scale,distance=13,height=50°, ...
+>  center=[0,0,-2],frame=3):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-008.png}
+\begin{eulercomment}
+1. 5*exp(-x\textasciicircum{}2-y\textasciicircum{}2) adalah fungsi matematika yang digunakan untuk
+membuat grafik 3D.\\
+2. r=2 mengatur jarak maksimum dari pusat grafik ke tepi grafik.\\
+3. \textless{}fscale mengatur faktor skala untuk warna.\\
+4. \textless{}scale mengatur faktor skala untuk ukuran grafik.\\
+5. distance=13 mengatur jarak pandang dari grafik.\\
+6. height=50° mengatur ketinggian pandangan dari grafik dalam derajat.\\
+7. center=[0,0,-2] mengatur pusat pandangan dari grafik.\\
+8. frame=3 mengatur jenis bingkai yang digunakan untuk grafik.
+
+Plot kutub juga tersedia. Parameter polar=true menggambar plot kutub.
+Fungsi tersebut harus tetap merupakan fungsi dari x dan y. Parameter
+"fscale" menskalakan fungsi dengan skalanya sendiri. Kalau tidak,
+fungsinya akan diskalakan agar sesuai dengan kubus.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("1/(x^2+y^2+1)",r=5,>polar, ...
+>fscale=2,>hue,n=100,zoom=4,>contour,color=blue):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-009.png}
+\begin{eulercomment}
+1. 1/(x\textasciicircum{}2+y\textasciicircum{}2+1) adalah fungsi matematika yang digunakan untuk membuat
+grafik 3D.\\
+2. r=5 mengatur jarak maksimum dari pusat grafik ke tepi grafik.\\
+3. polar mengatur tampilan grafik dalam koordinat polar.\\
+4. fscale=2 mengatur faktor skala untuk warna.\\
+5. hue mengatur skala warna yang digunakan pada grafik.\\
+6. n=100 mengatur jumlah titik yang digunakan untuk membuat grafik.\\
+7. zoom=4 mengatur faktor perbesaran grafik.\\
+8. contour mengatur tampilan garis kontur pada grafik.\\
+9. color=blue mengatur warna garis kontur pada grafik.
+\end{eulercomment}
+\begin{eulerprompt}
+>function f(r) := exp(-r/2)*cos(r); ...
+>plot3d"f(x^2+y^2)",>polar,scale=[1,1,0.4],r=pi,frame=3,zoom=4):
+\end{eulerprompt}
+\begin{euleroutput}
+  Function plot3d needs at least one argument!
+  Use: plot3d (x \{, y: none, z: none, xmin: none, xmax: none, ...\}) 
+  Error in:
+  plot3d"f(x^2+y^2)",>polar,scale=[1,1,0.4],r=pi,frame=3,zoom=4) ...
+        ^
+\end{euleroutput}
+\begin{eulerprompt}
+>function f(r) := exp(-r/2)*cos(r); ...
+>plot3d("f(x^2+y^2)",>polar,scale=[1,1,0.4],r=pi,frame=3,zoom=4):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-010.png}
+\begin{eulercomment}
+1. function f(r) := exp(-r/2)*cos(r) adalah fungsi matematika yang
+didefinisikan sebagai f(r) = e\textasciicircum{}(-r/2) * cos(r).\\
+2. plot3d("f(x\textasciicircum{}2+y\textasciicircum{}2)",polar,scale=[1,1,0.4],r=pi,frame=3,zoom=4)
+adalah perintah untuk membuat grafik 3D dari fungsi f(x\textasciicircum{}2+y\textasciicircum{}2).\\
+3. polar mengatur tampilan grafik dalam koordinat polar.\\
+4. scale=[1,1,0.4] mengatur faktor skala untuk ukuran grafik.\\
+5. r=pi mengatur jarak maksimum dari pusat grafik ke tepi grafik.\\
+6. frame=3 mengatur jenis bingkai yang digunakan untuk grafik.\\
+7. zoom=4 mengatur faktor perbesaran grafik.
+
+Parameter memutar memutar fungsi di x di sekitar sumbu x.
+
+- rotate=1: Menggunakan sumbu x\\
+- rotate=2: Menggunakan sumbu z
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^2+1",a=-1,b=1,rotate=true,grid=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-011.png}
+\begin{eulercomment}
+1. x\textasciicircum{}2+1 adalah fungsi matematika yang digunakan untuk membuat grafik
+3D.\\
+2. a=-1,b=1 mengatur rentang sumbu x yang akan ditampilkan pada
+grafik.\\
+3. rotate=true mengatur grafik agar dapat diputar secara interaktif.\\
+4. grid=5 mengatur jumlah garis koordinat yang ditampilkan pada
+grafik.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^2+1",a=-1,b=1,rotate=2,grid=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-012.png}
+\begin{eulercomment}
+1. x\textasciicircum{}2+1 adalah fungsi matematika yang digunakan untuk membuat grafik
+3D.\\
+2. a=-1,b=1 mengatur rentang sumbu x yang akan ditampilkan pada
+grafik.\\
+3. rotate=2 mengatur grafik agar dapat diputar secara interaktif
+dengan menggunakan mouse.\\
+4. grid=5 mengatur jumlah garis koordinat yang ditampilkan pada
+grafik.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("sqrt(25-x^2)",a=0,b=5,rotate=1):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-013.png}
+\begin{eulercomment}
+1. sqrt(25-x\textasciicircum{}2) adalah fungsi matematika yang digunakan untuk membuat
+grafik 3D.\\
+2. a=0,b=5 mengatur rentang sumbu x yang akan ditampilkan pada grafik.\\
+3. rotate=1 mengatur grafik agar dapat diputar secara interaktif.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x*sin(x)",a=0,b=6pi,rotate=2):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-014.png}
+\begin{eulercomment}
+1. x*sin(x) adalah fungsi matematika yang digunakan untuk membuat
+grafik 3D.\\
+2. a=0,b=6pi mengatur rentang sumbu x yang akan ditampilkan pada
+grafik.\\
+3. rotate=2 mengatur grafik agar dapat diputar secara interaktif.
+
+Berikut adalah plot dengan tiga fungsi.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x","x^2+y^2","y",r=2,zoom=3.5,frame=3):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-015.png}
+\begin{eulercomment}
+1. x adalah fungsi matematika yang digunakan untuk menentukan nilai
+sumbu x pada grafik.\\
+2. x\textasciicircum{}2+y\textasciicircum{}2 adalah fungsi matematika yang digunakan untuk menentukan
+nilai sumbu z pada grafik.\\
+3. y adalah fungsi matematika yang digunakan untuk menentukan nilai
+sumbu y pada grafik.\\
+4. r=2 mengatur jarak maksimum dari pusat grafik ke tepi grafik.\\
+5. zoom=3.5 mengatur faktor perbesaran grafik.\\
+6. frame=3 mengatur jenis bingkai yang digunakan untuk grafik.
+\end{eulercomment}
+\begin{eulercomment}
+
+
+\begin{eulercomment}
+\eulerheading{2. Menggambar Grafik Fungsi Dua Variabel yang}
+\begin{eulercomment}
+* Rumusnya Disimpan dalam Variabel Ekspresi
+
+Fungsi ini dapat memplot plot 3D dengan grafik fungsi dua\\
+variabel, permukaan berparameter, kurva ruang, awan titik,\\
+penyelesaian persamaan tiga variabel. Semua plot 3D bisa\\
+ditampilkan sebagai anaglyph.
+
+fungsi plot3d (x, y, z, xmin, xmax, ymin, ymax, n, a
+
+Parameter
+
+x : ekspresi dalam x dan y\\
+x,y,z : matriks koordinat suatu permukaan\\
+x,y,z : ekspresi dalam x dan y untuk permukaan parametrik\\
+x,y,z : ekspresi dalam x untuk memplot kurva ruang
+
+xmin,xmax,ymin,ymax :\\
+\end{eulercomment}
+\begin{eulerttcomment}
+  x,y batas ekspresi
+\end{eulerttcomment}
+\begin{eulercomment}
+
+contoh:
+
+ekspresi dalam string
+\end{eulercomment}
+\begin{eulerprompt}
+>expr := "x^2+sin(y)"
+\end{eulerprompt}
+\begin{euleroutput}
+  x^2+sin(y)
+\end{euleroutput}
+\begin{eulercomment}
+plot ekspresi
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d(expr,-5,5,0,6*pi):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-016.png}
+\begin{eulercomment}
+1. x\textasciicircum{}2+sin(y) adalah fungsi matematika yang digunakan untuk membuat
+grafik 3D.\\
+2. -5,5 mengatur rentang sumbu x yang akan ditampilkan pada grafik.\\
+3. 0,6*pi mengatur rentang sumbu y yang akan ditampilkan pada grafik.
+
+contoh 1:
+\end{eulercomment}
+\begin{eulerprompt}
+> 
+>expr := "4*x^3*y"
+\end{eulerprompt}
+\begin{euleroutput}
+  4*x^3*y
+\end{euleroutput}
+\begin{eulerprompt}
+>aspect(1.5); plot3d(expr):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-017.png}
+\begin{eulercomment}
+1. aspect(2) mengatur aspek rasio pada grafik 3D.\\
+2. plot3d(expr) adalah fungsi matematika yang digunakan untuk membuat
+grafik 3D.
+\end{eulercomment}
+\begin{eulercomment}
+contoh 2:
+\end{eulercomment}
+\begin{eulerprompt}
+>expr := "cos(x)*sin(y)"
+\end{eulerprompt}
+\begin{euleroutput}
+  cos(x)*sin(y)
+\end{euleroutput}
+\begin{eulerprompt}
+>plot3d(expr):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-018.png}
+\begin{eulercomment}
+contoh 3:
+\end{eulercomment}
+\begin{eulerprompt}
+>expr := "y^2-x^2"
+\end{eulerprompt}
+\begin{euleroutput}
+  y^2-x^2
+\end{euleroutput}
+\begin{eulerprompt}
+>aspect(1.5); plot3d(expr,-5,5,-5,5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-019.png}
+\begin{eulercomment}
+\begin{eulercomment}
+\eulerheading{3. Menggambar Grafik Fungsi Dua Variabel yang}
+\begin{eulercomment}
+* Fungsinya Didefinisikan sebagai Fungsi Numerik
+
+\end{eulercomment}
+\eulersubheading{Fungsi Dua Variabel}
+\begin{eulercomment}
+Fungsi dua variabel adalah sebuah fungsi yang bernilai real dari dua
+variabel real. Fungsi ini memadankan setiap pasangan terurut (x,y)
+pada suatu himpunan D dari bidang dengan bilangan real tunggal f(x,y).
+Dalam matematika, fungsi dua variabel atau lebih digunakan untuk
+menggambarkan hubungan antara dua atau lebih variabel.
+
+\end{eulercomment}
+\eulersubheading{Fungsi Numerik}
+\begin{eulercomment}
+Fungsi numerik adalah suatu fungsi matematika yang menghasilkan nilai
+numerik sebagai output-nya. Fungsi ini dapat dinyatakan dalam bentuk
+persamaan matematika atau algoritma komputasi.
+
+Contoh:
+
+Fungsi\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x,y) = 5x+y
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Misal input nilai x=2 dan y=3, maka akan dihasilkan nilai z yaitu
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+z = f(x,y) = 5(2)+3 = 10+3 = 13
+\]
+\end{eulerformula}
+\begin{eulercomment}
+\end{eulercomment}
+\eulersubheading{Gambar Grafik Fungsi}
+\begin{eulercomment}
+Fungsi satu baris numerik didefinisikan oleh ":=".
+
+Langkah-langkah untuk memvisualisasikan grafik fungsi dua variabel
+yang fungsi nya didefinisikan sebagai fungsi numerik dalam plot3d:
+
+1. Buat fungsi numerik yang akan digunakan untuk memvisualisasikan
+data.\\
+function f(x,y):=ax+by\\
+dimana a dan b adalah konstanta
+
+2. Gunakan fungsi plot3d() untuk membuat grafik tiga dimensi dari
+fungsi numerik.\\
+plot3d("f"):
+
+\end{eulercomment}
+\eulersubheading{Contoh}
+\begin{eulercomment}
+Fungsi matematika f(x,y) dapat digambarkan dalam bentuk grafik tiga
+dimensi menggunakan perintah plot3d. Berikut adalah contoh penggunaan
+perintah plot3d untuk menggambarkan fungsi tersebut:
+
+1. Fungsi Linear Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x,y)=5x+3y+1
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function f(x,y):= 5*x+3*y+1
+>plot3d("f"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-020.png}
+\begin{eulercomment}
+- Fungsi f(x,y) didefinisikan sebagai 5x+3y+1.\\
+- Perintah "plot3d("f")" digunakan untuk memplot grafik 3D dari fungsi
+f(x,y) menggunakan fungsi plot3d di EMT.\\
+- Grafik yang dihasilkan akan menampilkan fungsi dalam tiga dimensi,
+dengan sumbu x dan y mewakili variabel masukan dan sumbu z mewakili
+nilai keluaran fungsi. Grafik akan menunjukkan bentuk fungsi dan
+perubahannya seiring dengan perubahan variabel masukan.
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+2. Fungsi Kuadrat Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x,y)=x^2+3y^2+21
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function f(x,y):= x^2+(3*y)^2+27
+>plot3d("f"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-021.png}
+\begin{eulercomment}
+- Perintah "function f(x,y):= x\textasciicircum{}2+(3*y)\textasciicircum{}2+27" berarti mendefinisikan
+fungsi matematika f(x,y) sebagai x pangkat 2 ditambah 3 kali y pangkat
+2 ditambah 27.\\
+- Perintah "plot3d("f")" berarti membuat grafik tiga dimensi dari
+fungsi f(x,y) yang telah didefinisikan sebelumnya.
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+3. Fungsi Logaritma Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x,y)= \log(2xy)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function f(x,y):= log((2*x)*y)
+>plot3d("f"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-022.png}
+\begin{eulercomment}
+- Input yang diberikan adalah fungsi matematika dua variabel, f(x,y),
+yang didefinisikan sebagai logaritma hasil kali 2x dan y.\\
+- Perintah "plot3d("f")" digunakan untuk memplot grafik fungsi f(x,y)
+dalam ruang tiga dimensi.
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+4. Fungsi Eksponen Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x,y)=x^{5y+10}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function f(x,y):= x^(5*y+10)
+>plot3d("f"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-023.png}
+\begin{eulercomment}
+- Perintah `fungsi f(x,y):= x\textasciicircum{}(5y+10)` adalah fungsi matematika dua
+variabel `x` dan `y` dan dengan rumus x\textasciicircum{}(5y+10)\\
+- Perintah `plot3d("f")` digunakan untuk memplot fungsi dalam ruang
+tiga dimensi. Plot yang dihasilkan akan menampilkan nilai fungsi
+sebagai permukaan pada bidang x-y, dengan tinggi permukaan mewakili
+nilai fungsi pada titik tersebut.
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+5. Fungsi Trigonometri Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x,y)=cos(x)+sin(y)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function f(x,y):= cos(x)*sin(y)
+>plot3d("f"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-024.png}
+\begin{eulercomment}
+- Perintah "function f(x,y):= cos(x)*sin(y)" adalah perintah untuk
+mendefinisikan fungsi matematika f(x,y) yang menghasilkan nilai
+cosinus dari x dikalikan dengan sinus dari y.\\
+- Perintah "plot3d("f")" adalah perintah untuk membuat grafik tiga
+dimensi dari fungsi f(x,y) yang telah didefinisikan sebelumnya.
+
+
+
+\begin{eulercomment}
+\eulerheading{4. Menggambar Grafik Fungsi Dua Variabel yang}
+\begin{eulercomment}
+* Fungsinya Didefinisikan sebagai Fungsi Simbolik
+
+\end{eulercomment}
+\eulersubheading{Fungsi Simbolik}
+\begin{eulercomment}
+Fungsi simbolik adalah fungsi yang dinyatakan dengan menggunakan
+simbol-simbol matematika, seperti huruf dan operasi matematika,
+daripada menggunakan angka konkret atau ekspresi numerik. Fungsi
+simbolik sering digunakan untuk menggambarkan hubungan antara
+variabel-variabel matematika dalam bentuk yang lebih umum dan abstrak.
+
+Contoh fungsi simbolik yang umum adalah:
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x,y) = 2x + y
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Dalam contoh di atas, g(x) adalah fungsi simbolik yang mengaitkan
+setiap nilai x dengan hasil dari ekspresi matematika 2x + 3. Fungsi
+ini dapat digunakan untuk menghitung nilai fungsi untuk berbagai nilai
+x.
+
+\end{eulercomment}
+\eulersubheading{Perbedaan Fungsi Numerik dan Fungsi Simbolik}
+\begin{eulercomment}
+1. Fungsi Numerik\\
+Fungsi numerik dinyatakan dalam bentuk yang lebih konkret menggunakan
+angka-angka nyata.
+
+Contoh fungsi numerik adalah
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x,y) = 2x + y + 3
+\]
+\end{eulerformula}
+\begin{eulercomment}
+dimana kita memberikan nilai numerik kepada "x dan y"\\
+misalnya, x = 5 dan y = 2, maka hasilnya adalah angka konkret yaitu
+g(5,2) = 15
+
+2. Fungsi Simbolik\\
+Fungsi simbolik dinyatakan menggunakan simbol-simbol matematika
+seperti huruf (variabel) dan operasi matematika.
+
+Contoh fungsi simbolik adalah
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x,y) = 2x + y + 3
+\]
+\end{eulerformula}
+\begin{eulercomment}
+"g" adalah simbol fungsi\\
+"x,y" adalah variabel,\\
+2x + 3 adalah ekspresi matematika yang menggambarkan hubungan antara
+"x,y" dan hasil fungsi.
+
+\end{eulercomment}
+\eulersubheading{Gambar Grafik Fungsi}
+\begin{eulercomment}
+Fungsi satu baris simbolik didefinisikan oleh "\&=".
+
+Langkah-langkah untuk memvisualisasikan grafik fungsi dua variabel
+yang fungsi nya didefinisikan sebagai fungsi simbolikdalam plot3d:
+
+1. Buat fungsi simbolik yang akan digunakan untuk memvisualisasikan
+data.\\
+function g(x,y):= ax+by;\\
+dimana a dan b adalah konstanta
+
+2. Gunakan fungsi plot3d() untuk membuat grafik tiga dimensi dari
+fungsi numerik.\\
+plot3d("g"):
+
+3. Menentukan rentang variabel\\
+misal\\
+plot3d("g(x,y)",-10,10,-5,5):\\
+dengan batasan x dari -10 hingga 10 dan batasan y dari -5 hingga 5
+
+\end{eulercomment}
+\eulersubheading{Contoh}
+\begin{eulercomment}
+1. Fungsi Linear Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x,y)=x-2y+6
+\]
+\end{eulerformula}
+\begin{eulercomment}
+\end{eulercomment}
+\begin{eulerprompt}
+>function g(x,y)&= x-2*y+6;
+>plot3d("g(x,y)"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-025.png}
+\begin{eulercomment}
+- Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+x dan y, dan menghasilkan sebuah nilai berdasarkan rumus x - 2y + 6.\\
+- Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+dari fungsi tersebut.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("g(x,y)",-1,2,0,2*pi):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-026.png}
+\begin{eulercomment}
+- Perintah "plot3d("g(x,y)",-1,2,0,2*pi)" adalah perintah untuk
+menggambar grafik fungsi tiga dimensi "g(x,y)" pada rentang x dari -1
+hingga 2 dan rentang y dari 0 hingga 2pi.
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+2. Fungsi Kuadrat Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x,y)=x^2+y^2+5
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function g(x,y)&= x^2+y^2+5;
+>plot3d("g(x,y)"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-027.png}
+\begin{eulercomment}
+- Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+x dan y, dan menghasilkan sebuah nilai berdasarkan rumus x\textasciicircum{}2+y\textasciicircum{}2+5\\
+- Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+dari fungsi tersebut.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("g(x,y)",-10,10,-1,5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-028.png}
+\begin{eulercomment}
+- Perintah "plot3d("g(x,y)",-10,10,-1,5)" adalah perintah untuk
+menggambar grafik fungsi tiga dimensi g(x,y) pada rentang x dari -10
+hingga 10 dan rentang y dari -1 hingga 5
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+3. Fungsi Logaritma Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x,y) = \log(xy5)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function g(x,y)&= log(x*y*5);
+>plot3d("g(x,y)"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-029.png}
+\begin{eulercomment}
+- Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+x dan y, dan menghasilkan sebuah nilai berdasarkan rumus logaritma x
+dikalikan y dikalikan 5\\
+- Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+dari fungsi tersebut.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("g(x,y)",-1,1,-5,5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-030.png}
+\begin{eulercomment}
+- Perintah "plot3d("g(x,y)",-1,1,-5,5)" adalah perintah untuk
+menggambar grafik fungsi tiga dimensi g(x,y) pada rentang x dari -1
+hingga 1 dan rentang y dari -5 hingga 5
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("g(x,y)",-1,1,-5,5,zoom=4.5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-031.png}
+\begin{eulercomment}
+- plot3d: perintah untuk membuat grafik 3D.\\
+- "g(x,y)": fungsi matematika yang akan digunakan untuk membuat
+grafik.\\
+- -1,1: rentang nilai variabel x yang akan digunakan dalam grafik.\\
+- -5,5: rentang nilai variabel y yang akan digunakan dalam grafik.\\
+- zoom=4.5: perintah untuk memperbesar tampilan grafik dengan faktor
+4.5.
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+4. Fungsi Eksponen Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x,y) = 2^{xy5}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function g(x,y)&= 2^(x*y*5);
+>plot3d("g(x,y)"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-032.png}
+\begin{eulercomment}
+- Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+x dan y, dan menghasilkan sebuah nilai berdasarkan rumus 2\textasciicircum{}(xy5)\\
+- Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+dari fungsi tersebut.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("g(x,y)",-1,5,-1,3,frame=3,zoom=3):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-033.png}
+\begin{eulercomment}
+- Peintah plot3d("g(x,y)",-1,5,-1,3,frame=3,zoom=3) adalah perintah
+untuk membuat plot tiga dimensi dari fungsi `g(x,y)` dengan batas `x`
+dari `-1` hingga `5` dan batas `y` dari `-1` hingga `3`.
+
+- plot3d: perintah untuk membuat plot tiga dimensi.\\
+- "g(x,y)"`: fungsi yang akan diplot.\\
+- (-1,5): batas `x` dari `-1` hingga `5`.\\
+- (-1,3): batas `y` dari `-1` hingga `3`.\\
+- frame=3: menampilkan frame nomor 3.\\
+- zoom=3: memperbesar tampilan plot sebanyak 3 kali.
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+5. Fungsi Trigonometri Dua Variabel
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+g(x,y)=tan(x) - cot(y)
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function g(x,y)&= tan(x)-cos(y);
+>plot3d("g(x,y)"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-034.png}
+\begin{eulercomment}
+- Fungsi g(x,y) adalah fungsi matematika yang mengambil dua variabel,
+x dan y, dan menghasilkan sebuah nilai berdasarkan rumus tan(x)-cos(y)\\
+- Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+dari fungsi tersebut.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("g(x,y)",-1,3,0,2*pi,frame=1,zoom=3.5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-035.png}
+\begin{eulercomment}
+- Peintah plot3d("g(x,y)",-1,3,0,2*pi,frame=5,zoom=3) adalah perintah
+untuk membuat plot tiga dimensi dari fungsi `g(x,y)` dengan batas `x`
+dari `-1` hingga `3` dan batas `y` dari `0` hingga `2pi`.
+
+- plot3d: perintah untuk membuat plot tiga dimensi.\\
+- "g(x,y)"`: fungsi yang akan diplot.\\
+- (-1,3): batas `x` dari `-1` hingga `3`.\\
+- (0,2pi): batas `y` dari `0` hingga `2pi`.\\
+- frame=1: menampilkan frame nomor 1.\\
+- zoom=3.5: memperbesar tampilan plot sebanyak 3.5 kali.
+
+\end{eulercomment}
+\eulersubheading{}
+\begin{eulercomment}
+6. Fungsi Akar Kuadrat
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+P(x,y)= \sqrt{10x^2+2y^2}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>function P(x,y) &= sqrt(10*x^2+2*y^2);
+>plot3d("P(x,y)"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-036.png}
+\begin{eulercomment}
+- Fungsi P(x,y) adalah fungsi matematika yang mengambil dua variabel,
+x dan y, dan menghasilkan sebuah nilai berdasarkan rumus akar kuadrat
+dari 10x\textasciicircum{}2+2y\textasciicircum{}2\\
+- Perintah "plot3d" digunakan untuk menghasilkan grafik tiga dimensi
+dari fungsi tersebut.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("P(x,y)",-2,2,0,3*pi,frame=5,zoom=2,scale=1):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-037.png}
+\begin{eulercomment}
+- P(x,y): Merupakan fungsi yang akan digambarkan dalam grafik tiga
+dimensi.\\
+- (-2,2): Merupakan rentang nilai dari sumbu x yang akan digunakan
+dalam grafik.\\
+- (0,3pi): Merupakan rentang nilai dari sumbu y yang akan digunakan
+dalam grafik. Nilai pi dikalikan dengan 3 agar rentang nilai y
+mencakup tiga putaran lingkaran penuh.\\
+- frame=5: Menentukan nomor bingkai (frame) yang akan digunakan dalam
+animasi grafik.\\
+- zoom=2: Menentukan faktor pembesaran grafik. Dengan memperbesar
+tampilan, kita dapat melihat detail yang lebih kecil pada plot.\\
+- scale=1: Menentukan skala grafik. Dengan mengatur skala, kita dapat
+mengubah jarak antara titik-titik pada sumbu tersebut.
+\end{eulercomment}
+\begin{eulercomment}
+1. aspect(1.5) mengatur aspek rasio pada grafik 3D.\\
+2. plot3d(expr,-5,5,-5,5) adalah fungsi matematika yang digunakan
+untuk membuat grafik 3D.\\
+3. -5,5 mengatur rentang sumbu x yang akan ditampilkan pada grafik.\\
+4. -5,5 mengatur rentang sumbu y yang akan ditampilkan pada grafik.
+\end{eulercomment}
+\eulerheading{Menggambar Data $x$, $y$, $z$}
+\begin{eulercomment}
+* pada ruang Tiga Dimensi (3D)
+
+Definisi
+
+\end{eulercomment}
+\begin{eulerttcomment}
+  Menggambar data pada ruang tiga dimensi (3D) adalah proses
+\end{eulerttcomment}
+\begin{eulercomment}
+visualisasi data yang mengubah informasi dalam tiga dimensi, yaitu
+panjang, lebar, dan tinggi, menjadi representasi visual yang dapat
+dipahami dan dianalisis.
+
+Tujuan:
+
+\end{eulercomment}
+\begin{eulerttcomment}
+  Tujuan dari menggambar data 3D adalah untuk membantu pemahaman dan
+\end{eulerttcomment}
+\begin{eulercomment}
+interpretasi data yang lebih baik, terutama ketika data tersebut
+memiliki komponen yang tidak dapat direpresentasikan dengan baik dalam
+dua dimensi.
+
+Sama seperti plot2d, plot3d menerima data. Untuk objek 3D, Anda perlu
+menyediakan matriks nilai x-, y- dan z, atau tiga fungsi atau ekspresi
+fx(x,y), fy(x,y), fz(x,y).
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+\gamma(t,s) = (x(t,s),y(t,s),z(t,s))
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Karena x,y,z adalah matriks, kita asumsikan bahwa (t,s) melalui sebuah
+kotak persegi. Hasilnya, Anda dapat memplot gambar persegi panjang di
+ruang angkasa.
+
+Kita dapat menggunakan bahasa matriks Euler untuk menghasilkan
+koordinat secara efektif.
+
+Dalam contoh berikut, kami menggunakan vektor nilai t dan vektor kolom
+nilai s untuk membuat parameter permukaan bola. Dalam gambar kita
+dapat menandai daerah, dalam kasus kita daerah kutub.
+
+\end{eulercomment}
+\eulersubheading{Contoh 1}
+\begin{eulerprompt}
+>t=-1:0.1:1; s=(-1:0.1:1)'; plot3d(t,s,t*s,grid=10):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-038.png}
+\begin{eulercomment}
+Baris pertama kode "t=-1:0.1:1" membuat vektor baris t yang berisi
+nilai dari -1 hingga 1 dengan interval 0.1. Baris kedua
+"s=(-1:0.1:1)'" membuat vektor kolom s yang berisi nilai dari -1
+hingga 1 dengan interval 0.1. Operator transpose ' digunakan untuk
+mengubah vektor baris t menjadi vektor kolom.\\
+Baris ketiga "plot3d(t,s,ts,grid=10)" membuat plot tiga dimensi dari
+fungsi f(x,y) = xy pada domain [-1,1] x [-1,1]. Plot dibuat
+menggunakan fungsi plot3d, yang mengambil tiga argumen: koordinat x,
+y, dan z dari titik-titik yang akan diplot. Dalam hal ini, koordinat x
+diberikan oleh vektor t, koordinat y diberikan oleh vektor s, dan
+koordinat z diberikan oleh hasil perkalian t dan s, yaitu ts.
+Parameter grid diatur menjadi 10, yang menunjukkan jumlah garis grid
+yang akan ditampilkan pada plot.
+
+\end{eulercomment}
+\eulersubheading{Contoh 2}
+\begin{eulercomment}
+Tentu saja, titik cloud juga dimungkinkan. Untuk memplot data titik
+dalam ruang, kita membutuhkan tiga vektor untuk koordinat titik-titik
+tersebut.
+
+Gayanya sama seperti di plot2d dengan points=true;
+\end{eulercomment}
+\begin{eulerprompt}
+>n=500;...
+>plot3d(normal(1,n),normal(1,n),normal(1,n),points=true,style="."):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-039.png}
+\begin{eulercomment}
+Kode "n=500;
+plot3d(normal(1,n),normal(1,n),normal(1,n),points=true,style=".")"
+digunakan untuk membuat plot tiga dimensi dari tiga vektor normal yang
+dihasilkan secara acak dengan menggunakan fungsi "normal()" pada Euler
+Math Toolbox (EMT). Parameter "n=500" menunjukkan bahwa setiap vektor
+normal memiliki 500 elemen. Parameter "points=true" digunakan untuk
+menampilkan titik-titik pada plot, sedangkan parameter "style='.'"
+digunakan untuk mengatur gaya titik pada plot menjadi titik bulat.
+
+\end{eulercomment}
+\eulersubheading{Contoh 3}
+\begin{eulercomment}
+\end{eulercomment}
+\begin{eulerttcomment}
+ Dengan lebih banyak usaha, kami dapat menghasilkan banyak permukaan.
+\end{eulerttcomment}
+\begin{eulercomment}
+\end{eulercomment}
+\begin{eulerttcomment}
+ Dalam contoh berikut, kita membuat tampilan bayangan dari bola yang
+\end{eulerttcomment}
+\begin{eulercomment}
+terdistorsi. Koordinat biasa untuk bola adalah
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+\gamma(t,s) = (\cos(t)\cos(s),\sin(t)\sin(s),\cos(s))
+\]
+\end{eulerformula}
+\begin{eulercomment}
+dengan
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+0 \le t \le 2\pi, \quad \frac{-\pi}{2} \le s \le \frac{\pi}{2}.
+\]
+\end{eulerformula}
+\begin{eulercomment}
+Kami mendistorsi ini dengan sebuah faktor
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+d(t,s) = \frac{\cos(4t)+\cos(8s)}{4}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>t=linspace(0,2pi,320); s=linspace(-pi/2,pi/2,160)';...
+>d=1+0.2*(cos(4*t)+cos(8*s));...
+>plot3d(cos(t)*cos(s)*d,sin(t)*cos(s)*d,sin(s)*d,hue=1,...
+>light=[1,0,1],frame=0,zoom=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-040.png}
+\begin{eulercomment}
+Kode ini terdiri dari beberapa baris. Baris pertama
+"t=linspace(0,2pi,320)" membuat vektor t yang berisi 320 nilai yang
+sama terdistribusi secara merata antara 0 dan 2p. Baris kedua
+"s=linspace(-pi/2,pi/2,160)'" membuat vektor s yang berisi 160 nilai
+yang sama terdistribusi secara merata antara -p/2 dan p/2. Operator
+transpose ' digunakan untuk mengubah vektor baris s menjadi vektor
+kolom.
+
+Baris ketiga "d=1+0.2*(cos(4t)+cos(8s))" membuat vektor d yang berisi
+nilai dari 1 + 0.2 * (cos(4t) + cos(8s)). Baris keempat
+"plot3d(cos(t)*cos(s)*d,sin(t)*cos(s)*d,sin(s)*d,hue=1,light=[1,0,1],frame=0,zoom=5)"
+membuat plot tiga dimensi dari fungsi f(x,y) = 2x\textasciicircum{}2 + y\textasciicircum{}3. Plot dibuat
+menggunakan fungsi plot3d, yang mengambil empat argumen: koordinat x,
+y, dan z dari titik-titik yang akan diplot, serta beberapa parameter
+lainnya. Dalam hal ini, koordinat x diberikan oleh ekspresi
+cos(t)*cos(s)*d, koordinat y diberikan oleh ekspresi sin(t)*cos(s)*d,
+dan koordinat z diberikan oleh ekspresi sin(s)*d. Parameter "hue=1"
+digunakan untuk mengatur warna pada plot berdasarkan nilai fungsinya.
+Parameter "light=[1,0,1]" digunakan untuk mengatur pencahayaan pada
+plot. Parameter "frame=0" digunakan untuk menghilangkan frame pada
+plot. Parameter "zoom=5" digunakan untuk mengatur level zoom pada
+plot.
+\end{eulercomment}
+\eulerheading{Grafik Tiga Dimensi yang}
+\begin{eulercomment}
+* Bersifat Interaktif dan animasi grafik 3D
+\end{eulercomment}
+\begin{eulercomment}
+Membuat gambar grafik tiga dimensi (3D) yang bersifat interaktif dan
+animasi grafik 3D adalah proses menciptakan visualisasi tiga dimensi
+yang memungkinkan pengguna berinteraksi dengan objek-objek 3D.
+Interaktivitas dalam gambar 3D memungkinkan pengguna untuk melakukan
+tindakan seperti mengubah sudut pandang, memindahkan objek, atau
+berinteraksi dengan elemen-elemen dalam adegan 3D. Animasi grafik 3D
+dapat mencakup pergerakan, tetapi juga dapat berarti perubahan dalam
+tampilan atau atribut objek tanpa pergerakan fisik yang mencolok.
+
+CONTOH GAMBAR
+\end{eulercomment}
+\begin{eulerprompt}
+>function testplot () := plot3d("x^2+y^3"); ...
+>rotate("testplot"); testplot(): 
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-041.png}
+\begin{eulerprompt}
+>function testplot () := plot3d("x^2+y",distance=3,zoom=1,angle=pi/2,height=0); ...
+>rotate("testplot"); testplot(): 
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-042.png}
+\begin{eulercomment}
+Hilangkan command angle untuk bisa merotasikan grafik,dan height = 0
+untuk membuat posisi sejajar dengan mata jadi tidak mempengaruhi
+pergerakan hanya berbeda sudut pandang saja
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("exp(-x^2+y^2)",>user, ...
+>  title="Turn with the vector keys (press return to finish)"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-043.png}
+\begin{eulerprompt}
+>plot3d("exp(x^2+y^2)",>user, ...
+>title="Coba gerakan)")
+\end{eulerprompt}
+\begin{eulercomment}
+Interaksi pengguna dimungkinkan dengan parameter. Pengguna dapat
+menekan tombol berikut.\\
+1. kiri, kanan, atas, bawah: memutar sudut pandang\\
+2. +,-: memperbesar atau memperkecil\\
+3. a: menghasilkan anaglyph (lihat di bawah)\\
+4. l: beralih memutar sumber cahaya (lihat di bawah)\\
+5. spasi: disetel ulang ke default\\
+6. enter: akhiri interaksi
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("exp(-(x^2+y^2)/5)",r=10,n=80,fscale=4,scale=1.2,frame=3,>user):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-044.png}
+\begin{eulercomment}
+Parameter "r=10" menunjukkan jari-jari bola yang digunakan untuk
+membuat plot tiga dimensi. Dalam hal ini, jari-jari bola yang
+digunakan adalah 10.\\
+Parameter "n=80" menunjukkan jumlah titik yang digunakan untuk membuat
+plot. Semakin besar nilai n, semakin banyak titik yang digunakan untuk
+membuat plot, sehingga plot akan menjadi lebih halus dan akurat.\\
+Parameter "fscale=4" menunjukkan faktor skala pada sumbu z. Dalam hal
+ini, faktor skala pada sumbu z adalah 4.\\
+Parameter "scale=1.2" menunjukkan faktor skala pada plot. Semakin
+besar nilai scale, semakin besar ukuran plot yang dihasilkan.\\
+Parameter "frame=3" menunjukkan jenis frame yang digunakan pada plot.
+Dalam hal ini, jenis frame yang digunakan adalah frame kotak dengan
+sumbu x, y, dan z yang ditampilkan.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^2+y",distance=3,zoom=1,angle=pi/2,height=0):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-045.png}
+\begin{eulercomment}
+Tampilan dapat diubah dengan berbagai cara.
+
+- distance: jarak pandang ke plot.\\
+- zoom: nilai zoom.\\
+- angle: sudut terhadap sumbu y negatif dalam radian.\\
+- height: ketinggian tampilan dalam radian.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^4+y^2",a=0,b=1,c=-1,d=1, angle=-20?, height=20?, ...
+>  center=[0.4,0,0], zoom=5):
+\end{eulerprompt}
+\begin{euleroutput}
+  Closing bracket missing in function call!
+  Error in:
+  plot3d("x^4+y^2",a=0,b=1,c=-1,d=1, angle=-20?, height=20?,   c ...
+                                              ^
+\end{euleroutput}
+\begin{eulercomment}
+Plot selalu terlihat berada di tengah kubus plot. Anda dapat
+memindahkan bagian tengah dengan parameter center.
+
+Parameter center digunakan untuk memindahkan pusat plot ke lokasi
+tertentu dalam ruang. Dalam hal ini, pusat plot diatur ke titik (0.4,
+0, 0) dalam ruang tiga dimensi. Parameter center berguna ketika kita
+ingin mengubah sudut pandang plot atau ketika kita ingin menyelaraskan
+plot dengan objek lain dalam scene. Dengan menentukan pusat plot, kita
+dapat mengontrol posisi kamera dan arah tampilan plot.
+
+Ada beberapa parameter untuk menskalakan fungsi atau mengubah tampilan
+grafik.
+
+fscale: menskalakan ke nilai fungsi (defaultnya adalah \textless{}fscale).\\
+scale: angka atau vektor 1x2 untuk diskalakan ke arah x dan y.\\
+frame: jenis bingkai (default 1).
+\end{eulercomment}
+\begin{eulerprompt}
+>function testplot () := plot3d("5*exp(-x^2-y^2)",r=2,<fscale,<scale,distance=13,height=50?, ...
+>center=[0,0,-2],frame=3); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\begin{euleroutput}
+  Closing bracket missing in function call!
+  testplot:
+      useglobal; return plot3d("5*exp(-x^2-y^2)",r=2,<fscale,<scale ...
+  Try "trace errors" to inspect local variables after errors.
+  rotate:
+      f$(args());
+\end{euleroutput}
+\begin{eulerprompt}
+>plot3d("x^2+1",a=-1,b=1,rotate=true,grid=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-046.png}
+\begin{eulercomment}
+Penjelasan:\\
+Secara umum, parameter "a" dan "b" digunakan untuk menentukan rentang
+nilai variabel independen dalam suatu fungsi. Dalam kasus ini, "a=-1"
+dan "b=1" menunjukkan bahwa fungsi tersebut akan diplot pada interval
+[-1, 1]. Parameter "rotate=true" menunjukkan bahwa grafik akan diputar
+untuk memberikan tampilan bentuk tiga dimensi yang lebih baik.
+Parameter "grid=5" menunjukkan bahwa grid dengan jarak 5 unit akan
+ditampilkan pada grafik.
+
+Parameter memutar memutar fungsi dalam x di sekitar sumbu x.
+
+- rotate=1: Menggunakan sumbu x\\
+- rotate=2: Menggunakan sumbu z
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^2+1",a=-1,b=1,rotate=2,grid=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-047.png}
+\begin{eulerprompt}
+>function testplot () := plot3d("sqrt(25-x^2)",a=0,b=5,rotate=1); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-048.png}
+\begin{eulerprompt}
+>function testplot () := plot3d("x^4+y^2",a=0,b=1,c=-1,d=1,height=20?, ...
+>center=[0.4,0,0],zoom=5); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\begin{euleroutput}
+  Closing bracket missing in function call!
+  testplot:
+      useglobal; return plot3d("x^4+y^2",a=0,b=1,c=-1,d=1,height=20 ...
+  Try "trace errors" to inspect local variables after errors.
+  rotate:
+      f$(args());
+\end{euleroutput}
+\begin{eulerprompt}
+>function testplot () := plot3d("1/(x^2+y^2+1)",r=5,>polar, ...
+>fscale=2,>hue,n=100,zoom=4,>contour,color=red); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-049.png}
+\begin{eulercomment}
+Parameter "r=5" menunjukkan jari-jari bola yang digunakan untuk
+membuat plot tiga dimensi. Dalam hal ini, jari-jari bola yang
+digunakan adalah 5.\\
+Parameter "\textgreater{}polar" menunjukkan bahwa plot yang dibuat adalah plot
+polar tiga dimensi. Plot polar adalah plot yang dibuat dengan
+menggunakan koordinat polar, yaitu koordinat yang terdiri dari jarak
+dan sudut.\\
+Parameter "fscale=2" menunjukkan faktor skala pada sumbu z. Dalam hal
+ini, faktor skala pada sumbu z adalah 2.\\
+Parameter "\textgreater{}hue" menunjukkan bahwa warna pada plot akan diatur
+berdasarkan nilai fungsinya. Semakin tinggi nilai fungsinya, semakin
+terang warnanya.\\
+Parameter "n=100" menunjukkan jumlah titik yang digunakan untuk
+membuat plot. Semakin besar nilai n, semakin banyak titik yang
+digunakan untuk membuat plot, sehingga plot akan menjadi lebih halus
+dan akurat.\\
+Parameter "zoom=4" menunjukkan level zoom pada plot.\\
+Parameter "\textgreater{}contour" menunjukkan bahwa garis kontur akan ditampilkan
+pada plot.\\
+Parameter "color=blue" menunjukkan warna garis kontur pada plot. Dalam
+hal ini, warna yang digunakan adalah biru.
+
+Untuk plotnya, Euler menambahkan garis grid. Sebaliknya dimungkinkan
+untuk menggunakan garis level dan satu warna atau warna spektral.
+Euler dapat menggambar ketinggian fungsi pada sebuah plot dengan
+bayangan. Di semua plot 3D, Euler dapat menghasilkan anaglyph
+merah/cyan.
+
+-hue: Mengaktifkan bayangan cahaya, bukan kabel.\\
+-contour: Membuat plot garis kontur otomatis pada plot.\\
+-level=... (atau level): Vektor nilai garis kontur.
+\end{eulercomment}
+\begin{eulerprompt}
+>function testplot () := plot3d("x^2-y^2",0,5,0,5,level=-1:0.1:1,color=blue); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-050.png}
+\begin{eulercomment}
+Parameter "level=-1:0.1:1" menunjukkan rentang nilai fungsinya yang
+akan ditampilkan pada plot. Dalam hal ini, rentang nilai fungsinya
+adalah dari -1 hingga 1 dengan interval 0.1.
+\end{eulercomment}
+\begin{eulerprompt}
+>function testplot () := plot3d("x^2+y^4",>cp,cpcolor=green,cpdelta=0.2); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-051.png}
+\begin{eulercomment}
+Parameter "\textgreater{}cp" menunjukkan bahwa titik kontrol akan ditambahkan pada
+plot. Titik kontrol digunakan untuk menentukan bentuk dan posisi plot
+tiga dimensi.\\
+Parameter "cpcolor=green" menunjukkan warna titik kontrol yang akan
+digunakan. Dalam hal ini, warna yang digunakan adalah hijau.\\
+Parameter "cpdelta=0.2" menunjukkan jarak antara titik kontrol.
+Semakin kecil nilai cpdelta, semakin banyak titik kontrol yang akan
+ditambahkan pada plot.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("-x^2-y^2", ...
+>hue=true,light=[0,1,1],amb=0,user=true, ...
+> title="Press l and cursor keys (return to exit)"):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-052.png}
+\begin{eulercomment}
+parameter "hue=true" menunjukkan bahwa warna pada plot akan diatur
+berdasarkan nilai fungsinya. Semakin tinggi nilai fungsinya, semakin
+terang warnanya.\\
+Parameter "light=light=[0,1,1] menunjukkan intensitas cahaya pada
+plot. Nilai light=[0,1,1] menunjukkan bahwa cahaya datang dari arah
+positif y dan z.\\
+Parameter "amb=0" menunjukkan intensitas cahaya ambient pada plot.
+Nilai 0 menunjukkan bahwa tidak ada cahaya ambient yang digunakan.
+\end{eulercomment}
+\begin{eulerprompt}
+>function testplot () := plot3d("-x^2-y^2",color=rgb(0.2,0.2,0),hue=true,frame=false, ...
+> zoom=3,contourcolor=red,level=-2:0.1:1,dl=0.01); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-053.png}
+\begin{eulercomment}
+Parameter "frame=false" digunakan untuk menghilangkan frame pada plot
+tiga dimensi. Parameter "color=rgb(0.2,0.2,0)" menunjukkan warna dasar
+plot. Dalam hal ini, warna yang digunakan adalah hitam dengan nilai
+RGB (0.2, 0.2, 0). Parameter "dl=0.01" menunjukkan jarak antara
+titik-titik pada plot. Semakin kecil nilai dl, semakin banyak titik
+yang digunakan untuk membuat plot, sehingga plot akan menjadi lebih
+halus dan akurat. Namun, semakin kecil nilai dl, semakin lama waktu
+yang dibutuhkan untuk membuat plot.
+\end{eulercomment}
+\begin{eulerprompt}
+>function testplot () := plot3d("x^2+y^3",>contour,>spectral); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-054.png}
+\begin{eulerprompt}
+>function testplot () := plot3d("x^2+y^3", >transparent, grid=10, wirecolor=red); ...
+>rotate("testplot"); testplot():
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-055.png}
+\eulerheading{Fungsi Parametrik 3D}
+\begin{eulercomment}
+Fungsi parametrik merupakan jenis fungsi matematika yang menggambarkan
+hubungan antara dua atau lebih variabel, dimana masing-masing
+koordinat (x, y, z...) dinyatakan sebagai fungsi lain dari beberapa
+parameter. Fungsi parametrik dapat digunakan untuk menggambar kurva,
+lintasan, atau hubungan antara berbagai variabel yang bergantung pada
+parameter-parameter tertentu.
+
+Sebagai contoh :
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("cos(x)*cos(y)","sin(x)*cos(y)","sin(y)", a=0,b=2*pi,c=pi/2,d=-pi/2,...
+>>hue,color=blue,light=[0,1,3],<frame,...
+>n=90,grid=[20,50],wirecolor=black,zoom=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-056.png}
+\begin{eulerprompt}
+>plot3d("cos(x)*cos(y)","sin(x)*cos(y)","cos(x)", a=0,b=2*pi,c=pi/2,d=-pi/2,...
+>>hue,color=blue,light=[0,1,3],<frame,...
+>n=90,grid=[20,50],wirecolor=black,zoom=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-057.png}
+\begin{eulerprompt}
+>plot3d("cos(x)^3*sin(y)","sin(x)^2*sin(y)","cos(x)^2", a=0,b=2*pi,c=pi/2,d=-pi/2,...
+>>hue,color=blue,light=[0,1,5],<frame,...
+>n=90,grid=[20,50],wirecolor=black,zoom=5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-058.png}
+\eulerheading{8 Menggambar Fungsi Implisit Implisit}
+\begin{eulercomment}
+Fungsi implisit (implicit function) adalah fungsi yang memuat lebih
+dari satu variabel, berjenis variabel bebas dan variabel terikat yang
+berada dalam satu ruas sehingga tidak bisa dipisahkan pada ruas yang
+berbeda.
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+F(x,y,z)=0
+\]
+\end{eulerformula}
+\begin{eulercomment}
+(1 persamaan dan 3 variabel), terdiri dari 2 variabel bebas dan 1
+terikat
+
+Misalnya,\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+F(x, y, z) = x^2 + y^2 + z^2 = 1
+\]
+\end{eulerformula}
+\begin{eulercomment}
+adalah persamaan implisit yang menggambarkan bola dengan jari-jari 1
+dan pusat di (0,0,0).
+
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^2+y^3+z*y-1", r=5, implicit=3):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-059.png}
+\begin{eulerprompt}
+>c=1; d=1;
+>plot3d("((x^2+y^2-c^2)^2+(z^2-1)^2)*((y^2+z^2-c^2)^2+(x^2-1)^2)*((z^2+x^2-c^2)^2+(y^2-1)^2)-d", r=2, <frame,>implicit,>user):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-060.png}
+\begin{eulerprompt}
+>plot3d("x^2+y^2+4*x*z+z^3",>implicit, r=2, zoom=2.5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-061.png}
+\begin{eulercomment}
+Selain plot kontur yang sudah di jelaskan sebelumnya, pada EMT juga
+ada plot umplisit dalam tiga dimensi. Euler menghasilkan potongan
+melalui objek. Fitur plot3d termasuk plot implisit. Plot-plot ini
+menunjukkan himpunan nol dari sebuah fungsi dalam tiga variabel.
+
+Solusi dari\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+f(x,y,z) = 0
+\]
+\end{eulerformula}
+\begin{eulercomment}
+dapat divisualisasikan dalam potongan yang sejajar dengan bidang x-y,
+bidang x-z, dan bidang y-z.
+
+- implisit = 1: potong sejajar dengan bidang-y-z\\
+- implicit = 2: memotong sejajar dengan bidang x-z\\
+- implicit=4: memotong sejajar dengan bidang x-y
+
+Ambil contoh dari persamaan latex pada fungsi implisit tadi dan
+tambahkan nilai-nilai ini, sehingga kita dapat memplot persamaan ini\\
+\end{eulercomment}
+\begin{eulerformula}
+\[
+M = {(x,y,z) :{ x^2+y^3+zy=1}}
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>plot3d("x^2+y^3+z*y", r=1, implicit=2):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-062.png}
+\begin{eulercomment}
+Contoh fungsi implisit yang lainnya
+\end{eulercomment}
+\begin{eulerprompt}
+>plot3d("x^3+y^3+z*y-1",r=7,implicit=4):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-063.png}
+\begin{eulerprompt}
+>plot3d("2*x^2 + 3*y^2 + z^2 - 25",r=8,implicit=2):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-064.png}
+\begin{eulerprompt}
+>plot3d("x^5 + 5*y^3 + 3*z^2 - 5*x - 7*y - 5*z + 10",r=5,implicit=2):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-065.png}
+\begin{eulerprompt}
+>plot3d("x^3+y^5+5*x*z+z^3",>implicit,r=3,zoom=2):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-066.png}
+\begin{eulerprompt}
+>plot3d("x^2+y^2+4*x*z+z^3-5",>implicit,r=2,zoom=2.5):
+\end{eulerprompt}
+\eulerimg{19}{images/Dida Arkadia Ayu Jawata_22305144005_3D-067.png}
+\eulerheading{Fungsi Implisit Menggunakan Povray}
+\begin{eulercomment}
+Povray dapat memplot himpunan di mana f(x,y,z)=0, seperti parameter
+implisit di plot3d. Namun, hasilnya terlihat jauh lebih baik.
+
+Sintaks untuk fungsi-fungsi tersebut sedikit berbeda. Anda tidak dapat
+menggunakan output dari ekspresi Maxima atau Euler.
+
+\end{eulercomment}
+\begin{eulerformula}
+\[
+((x^2+y^2-c^2)^2+(z^2-1)^2)*((y^2+z^2-c^2)^2+(x^2-1)^2)*((z^2+x^2-c^2)^2+(y^2-1)^2)=d
+\]
+\end{eulerformula}
+\begin{eulerprompt}
+>load povray;
+>defaultpovray="C:\(\backslash\)Program Files\(\backslash\)POV-Ray\(\backslash\)v3.7\(\backslash\)bin\(\backslash\)pvengine.exe"
+\end{eulerprompt}
+\begin{euleroutput}
+  C:\(\backslash\)Program Files\(\backslash\)POV-Ray\(\backslash\)v3.7\(\backslash\)bin\(\backslash\)pvengine.exe
+\end{euleroutput}
+\begin{eulerprompt}
+>povstart(angle=70°,height=50°, zoom=4);
+>writeln(povsurface("pow(x,2)*y-pow(y,3)-pow(z,2)",povlook(blue)));
+>writeAxes();
+>povend();
+\end{eulerprompt}
+\begin{euleroutput}
+  Command was not allowed!
+  exec:
+      return _exec(program,param,dir,print,hidden,wait);
+  povray:
+      exec(program,params,defaulthome);
+  Try "trace errors" to inspect local variables after errors.
+  povend:
+      povray(file,w,h,aspect,exit); 
+\end{euleroutput}
+\end{eulernotebook}
+\end{document}

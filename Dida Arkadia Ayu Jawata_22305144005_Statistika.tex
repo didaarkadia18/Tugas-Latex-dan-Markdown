@@ -1,0 +1,301 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{eumat}
+
+\begin{document}
+\begin{eulernotebook}
+\begin{eulercomment}
+NAMA  : Dida Arkadia Ayu Jawata\\
+NIM   : 22305144005\\
+KELAS : Matematika E 2023\\
+\begin{eulercomment}
+\eulerheading{Menggambar Grafik  Statistika}
+\begin{eulercomment}
+\end{eulercomment}
+\eulersubheading{Diagram Kotak}
+\begin{eulercomment}
+Diagram kotak atau box plot merupakan ringkasan distribusi sampel yang
+disajikan secara grafis yang bisa menggambarkan bentuk distribusi data
+(skewness), ukuran tendensi sentral dan ukuran penyebaran (keragaman)
+data pengamatan. Diagram kotak sering digunakan ketika  jumlah
+distribusi data perlu dibandingkan. Diagram kotak menyajikan informasi
+tentang nilai--nilai inti dalam distribusi data termasuk juga
+pencilan. Pencilan adalah titik data yang terpaut jauh dari titik data
+lainnya.
+
+Contoh:\\
+Diketahui data berat badan mahasiswa di Universitas A sebagai berikut.
+\end{eulercomment}
+\begin{eulerprompt}
+>A=[55,50,33,42,44,37,63,74,56,34,51,43,45,39,64,77,60,35,53,43,48,41,65,87,61,36,54,44,49,41,66,89]
+\end{eulerprompt}
+\begin{euleroutput}
+  [55,  50,  33,  42,  44,  37,  63,  74,  56,  34,  51,  43,  45,  39,
+  64,  77,  60,  35,  53,  43,  48,  41,  65,  87,  61,  36,  54,  44,
+  49,  41,  66,  89]
+\end{euleroutput}
+\begin{eulercomment}
+Buatlah diagram kotak (box plot) kemudian tuliskan interpretasinya.
+\end{eulercomment}
+\begin{eulerprompt}
+>boxplot(A):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-001.png}
+\begin{eulercomment}
+Dari gambar box plot berat  badan mahasiswa Universitas  A, sepintas
+kita bisa menentukan beberapa ukuran statistik, meskipun tidak persis
+sekali. Nilai statistik pada badan boxplot berkisar pada: Nilai
+Minimum = 33 , Q1 = 41.5 , Median (Q2) = 49.5 , Q3 = 62 , Nilai
+Maksimum  = 89 . Sebaran data tidak simetris, melainkan menjulur ke
+arah kanan (postively skewness). Karena nilai jarak Q1 dengan Q2 lebih
+pendek dari jarak Q2 dengan Q3, maka data lebih terpusat di kiri. Akan
+tetapi data tersebut tergolong cenderung mesokurtik karena jarak IQR
+dengan panjang hampir sama, dengan data berpusat di angka 49.5
+
+
+Adapun contoh perbandingan 10 simulasi 500 nilai terdistribusi normal
+menggunakan box plot dan terdapat pencilan sebagai berikut.
+
+\end{eulercomment}
+\begin{eulerprompt}
+> p=normal(10,500); boxplot(p):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-002.png}
+\begin{eulercomment}
+pada diagram diatas, adalah membuat boxplot distribusi normal dengan
+rata-rata 10 dan standar deviasi 500. Boxplot adalah representasi
+grafis dari lokalitas, penyebaran, dan kecondongan sekelompok data
+numerik melalui kuartil mereka\\
+2
+
+\end{eulercomment}
+\eulersubheading{Diagram Batang}
+\begin{eulercomment}
+Diagram batang adalah representasi visual dari data yang menggunakan
+balok atau kolom vertikal untuk mewakili kategori, nilai atau variabel
+tertentu. Setiap kolom yang ada pada diagram  batang memiliki
+frekuensi atau jumlah dalam kategori tersebut.
+
+Contoh:
+
+Kita akan membuat diagram batang secara random.
+\end{eulercomment}
+\begin{eulerprompt}
+>columnsplot(cumsum(random(6)),style="/",color=red):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-003.png}
+\begin{eulerprompt}
+>columnsplot(cumsum(random(15)),style="-",color=black):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-004.png}
+\begin{eulerprompt}
+>columnsplot(cumsum(random(3)),style="|",color=orange):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-005.png}
+\begin{eulercomment}
+Selanjutnya kita akan mencoba  membuat diagram batang penjualan yang
+menggunakan variabel.
+\end{eulercomment}
+\begin{eulerprompt}
+>months=["Januari","Februari","Maret","April","Mei"];
+>values=[20,50,40,70,30];
+>columnsplot(values,lab=months,color=yellow);
+>title("Data Penjualan Beras Toko Kuning pada tahun 2023"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-006.png}
+\begin{eulercomment}
+Perintah "columnsplot(values,lab=months,color=yellow);" merupakan
+sintaks untuk membuat diagram batang dengan menggunakan nilai dari
+variabel "values", label bulan dari variabel "months", dan warna
+kuning
+
+Dari diagram batang tersebut kita bisa mengetahui data penjualan toko
+kuning selama lima bulan pada tahun 2023  yaitu, pada bulan Januari,
+Februari, Maret , April, Mei. Januari terjual 20 ton beras, Februari
+terjual 50 ton beras, Maret terjual 40 ton beras, April terjual 70 ton
+beras, dan Mei terjual 30 ton beras.
+
+\end{eulercomment}
+\eulersubheading{Diagram Lingkaran}
+\begin{eulercomment}
+Diagram lingkaran merupakan penyajian statistik data tunggal dalam\\
+bentuk lingkaran yang dibagi menjadi beberapa juring atau sektor yang\\
+menggambarkan banyak frekuensi untuk setiap data.Diagram lingkaran\\
+tidak menampilkan informasi frekuensi dari masing-masing data secara\\
+detail.
+\end{eulercomment}
+\begin{eulerprompt}
+>CP:=[rgb(0.5,0.5,0.5),red,yellow,green,rgb(0.9,0,0)]
+\end{eulerprompt}
+\begin{euleroutput}
+  [5.87532e+07,  2,  15,  3,  6.54049e+07]
+\end{euleroutput}
+\begin{eulerprompt}
+>i=[1,2,3,4,5]; piechart(values[i],color=CP[i],lab=months[i]):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-007.png}
+\begin{eulercomment}
+RGB adalah singkatan dari Red, Green, and Blue, dan setiap parameter
+mendefinisikan intensitas warna dengan nilai antara 0 dan 1. Warna
+pertama dalam daftar adalah warna abu-abu dengan jumlah merah, hijau,
+dan biru yang sama. Warna kedua merah, ketiga kuning, dan keempat
+hijau. Warna terakhir adalah warna merah dengan lebih banyak merah
+daripada hijau atau biru.
+
+\end{eulercomment}
+\eulersubheading{Diagram Bintang}
+\begin{eulercomment}
+Diagram bintang, terkadang disebut diagram radar atau diagram web,
+adalah metode perangkat grafis yang digunakan untuk menampilkan data
+multivariat. Multivariat dalam pengertian ini mengacu pada memiliki
+banyak karakteristik untuk diamati. Variabelnya juga harus berupa
+nilai yang berkisar.\\
+Diagram bintang terdiri dari rangkaian jari-jari bersudut sama, yang
+disebut jari-jari, dengan masing-masing jari mewakili salah satu
+variabel. Panjang jari-jari data sebanding dengan besaran variabel
+pada titik data relatif terhadap besaran maksimum variabel di
+seluruh titik data.
+\end{eulercomment}
+\begin{eulerprompt}
+>starplot(normal(1,15)+16,lab=1:15,>rays):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-008.png}
+\begin{eulerprompt}
+>starplot(values,lab=months,>rays):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-009.png}
+\begin{eulercomment}
+Syntax starplot(values,lab=months,rays) adalah perintah untuk membuat
+grafik bintang (star plot) dengan menggunakan nilai-nilai yang
+diberikan dalam vektor values, label sumbu yang diberikan dalam vektor
+months, dan jumlah rays yang menentukan jumlah garis radial yang
+digunakan dalam grafik
+
+
+\end{eulercomment}
+\eulersubheading{Diagram Impuls}
+\begin{eulercomment}
+Impuls (impulse) adalah perubahan momentum. Contohnya adalah sebuah
+bola bermassa yang tengah ditendang, bola menggelinding yang
+dihentikan, bola jatuh yang memantul, mobil yang menabrak tembok,
+telur jatuh yang pecah.\\
+Berikut adalah plot impuls dari data acak 1 sampai 20, terdistribusi
+secara merata di [0,1].
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d(makeimpulse(1:20,random(1,20)),>bar):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-010.png}
+\begin{eulercomment}
+Tetapi untuk data yang terdistribusi secara eksponensial, kita mungkin
+memerlukan plot logaritmik.
+\end{eulercomment}
+\begin{eulerprompt}
+> logimpulseplot(1:20,-log(random(1,20))*10):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-011.png}
+\begin{eulercomment}
+Jadi gambar grafiknya terlihat naik turun (mengalami perubahan).
+\end{eulercomment}
+\eulersubheading{Histogram}
+\begin{eulercomment}
+Histogram adalah representasi grafis (diagram) yang mengatur dan
+menampilkan frekuensi data sampel pada rentang tertentu. Frekuensi
+data yang ada pada masing-masing kelas direpresentasikan dengan bentuk
+grafik diagram batang atau kolom.
+\end{eulercomment}
+\begin{eulerprompt}
+>aspect(1); plot2d(random(100),>histogram):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-012.png}
+\begin{eulerprompt}
+>r=150:5:185; v=[22,71,136,150,139,71,32];
+>plot2d(r,v,a=150,b=185,c=0,d=150,bar=1,style="/"):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-013.png}
+\begin{eulercomment}
+Pola "r=150:5:185" berarti bahwa nilai r dimulai dari 150, kemudian
+bertambah 5 setiap kali, dan berakhir saat mencapai atau melebihi 185.
+Dengan pola ini, kita dapat menentukan nilai-nilai r yang sesuai.
+
+Dari data yang diperoleh dapat diketahui bahwa dari rentang kelas
+150-155 memiliki frekuensi 22, rentang kelas 155-160 memiliki
+frekuensi 71,  dan seterusnya.
+
+\end{eulercomment}
+\eulersubheading{Kurva Fungsi Kerapatan Probabilitas}
+\begin{eulercomment}
+Secara teoritis kurva probabilitas populasi diwakili oleh poligon
+frekuensi relatif yang dimuluskan (variabel acak  kontiniu
+diperlakukan seperti variabel acak diskrit yang rapat).Karena itu
+fungsi dari variabel acak kontiniu merupakan fungsi kepadatan
+probabilitas (probability density function – pdf). Pdf menggambarkan
+besarnya probabilitas per unit interval nilai variabel acaknya.
+\end{eulercomment}
+\begin{eulerprompt}
+>plot2d("qnormal(x,0,1)",-5,5);  ...
+>plot2d("qnormal(x,0,1)",a=1,b=4,>add,>filled):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-014.png}
+\begin{eulercomment}
+Perintah "plot2d("qnormal(x,0,1)",-5,5)" digunakan untuk membuat plot
+dari distribusi normal dengan mean 0 dan standard deviation 1 di
+rentang -5 hingga 5
+
+Probabilitas variabel acak x yang terletak antara 1 dan 4 memenuhi\\
+P(1\textless{}X\textless{}4)= luas daerah hijau
+
+\end{eulercomment}
+\eulersubheading{Kurva Fungsi Distribusi Kumulatif}
+\begin{eulercomment}
+Cumulative Distribution Function (CDF) atau fungsi distribusi
+kumulatif adalah fungsi matematika yang digunakan untuk menghitung
+probabilitas variabel acak diskrit atau kontinu. CDF memberikan
+probabilitas bahwa variabel acak akan menghasilkan nilai kurang dari
+atau sama dengan nilai tertentu. Dalam hal ini, CDF dapat digunakan
+untuk menghitung probabilitas kumulatif dari variabel acak.
+
+Berikut merupakan contoh kurva fungsi distribusi kumulatif kontinu:
+\end{eulercomment}
+\begin{eulerprompt}
+>splot2d("normaldis",-3,5):
+\end{eulerprompt}
+\begin{euleroutput}
+  Function splot2d not found.
+  Try list ... to find functions!
+  Error in:
+  splot2d("normaldis",-3,5): ...
+                           ^
+\end{euleroutput}
+\begin{eulercomment}
+Dapat kita lihat dalam kurva fungsi distribusi kumulatif kontinu
+terdiri atas tiga bagian yaitu:\\
+1. Bernilai 0 untuk x di  bawah minimal dari daerah rentang.\\
+2. Merupakan fungsi monoton naik pada daerah rentang.\\
+3. Mempunyai nilai konstan 1 di atas batas maksimum daerah rentangnya.
+
+Adapun contoh kurva fungsi distribusi kumulatif diskrit sebagai
+berikut.
+\end{eulercomment}
+\begin{eulerprompt}
+>x=normal(1,6);
+\end{eulerprompt}
+\begin{eulercomment}
+Baris kode tersebut akan menghasilkan suatu nilai acak dari distribusi
+normal dengan mean 1 dan deviasi standar 6, dan nilai tersebut
+disimpan dalam variabel x. Variabel x kemudian dapat digunakan dalam
+perhitungan atau analisis selanjutnya
+
+Fungsi empdist(x,vs) membutuhkan array nilai yang diurutkan. Jadi kita
+harus mengurutkan x sebelum kita dapat menggunakannya.
+\end{eulercomment}
+\begin{eulerprompt}
+>xs=sort(x);
+>plot2d("empdist",-3,5;xs):
+\end{eulerprompt}
+\eulerimg{29}{images/Dida Arkadia Ayu Jawata_22305144005-015.png}
+\begin{eulercomment}
+Grafik fungsi distribusi kumulatif peubah acak diskrit merupakan
+fungsi tangga naik dengan nilai terendah 0 dan nilai tertinggi 1.
+\end{eulercomment}
+\end{eulernotebook}
+\end{document}
