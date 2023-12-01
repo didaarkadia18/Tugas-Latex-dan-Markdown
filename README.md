@@ -1,5 +1,5 @@
 # Tugas-Latex-dan-Markdown
-Sisca cantik
-dida
-hehehehe
-kijnjinjnjj
+Nama : Dida Arkadia Ayu Jawata
+Kelas : Matematika E
+NIM : 22305144005
+GGF
